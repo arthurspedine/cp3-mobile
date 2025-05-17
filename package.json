@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-navigation/drawer": "^7.3.12",
+    "eas-cli": "^16.6.1",
     "expo": "~53.0.9",
     "expo-camera": "^16.1.6",
     "expo-constants": "~17.1.6",

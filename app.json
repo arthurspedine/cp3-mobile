@@ -21,7 +21,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.pinguin_code_testing.cp3mobile"
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -29,6 +30,13 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "036f3766-a459-470f-a9ff-4294b1278ac0"
+      }
+    },
+    "owner": "pinguin_code_testing"
   }
 }
