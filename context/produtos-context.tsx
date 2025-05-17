@@ -9,63 +9,10 @@ type ProdutoContextType = {
     removerProduto: (id: string) => void
 }
 
-const produtosFake: ProdutoType[] = [
-    {
-        id: uuidv4(),
-        nome: "Moto Honda CG 160",
-        dataFabricacao: "2023-02-15",
-        prazoValidade: "2025-02-15",
-        quantidade: 10,
-        lote: "A1001",
-        codBarras: "7891234567890",
-        estado: "SP"
-    },
-    {
-        id: uuidv4(),
-        nome: "Yamaha Fazer 250",
-        dataFabricacao: "2022-09-10",
-        prazoValidade: "2024-09-10",
-        quantidade: 5,
-        lote: "B2043",
-        codBarras: "7899876543210",
-        estado: "RJ"
-    },
-    {
-        id: uuidv4(),
-        nome: "Suzuki GSR 150",
-        dataFabricacao: "2023-06-01",
-        prazoValidade: "2025-06-01",
-        quantidade: 7,
-        lote: "C3098",
-        codBarras: "7894567891234",
-        estado: "MG"
-    },
-    {
-        id: uuidv4(),
-        nome: "Kawasaki Ninja 300",
-        dataFabricacao: "2021-12-05",
-        prazoValidade: "2023-12-05",
-        quantidade: 2,
-        lote: "D4789",
-        codBarras: "7893216549870",
-        estado: "RS"
-    },
-    {
-        id: uuidv4(),
-        nome: "BMW G 310 R",
-        dataFabricacao: "2023-04-20",
-        prazoValidade: "2026-04-20",
-        quantidade: 3,
-        lote: "E5120",
-        codBarras: "7896541237890",
-        estado: "PR"
-    }
-];
-
 export const ProdutoContext = createContext<ProdutoContextType>({} as ProdutoContextType);
 
 export const ProdutoProvider = ({ children }: { children: React.ReactNode }) => {
-    const [produtos, setProdutos] = useState<ProdutoType[]>(produtosFake);
+    const [produtos, setProdutos] = useState<ProdutoType[]>([]);
 
     const adicionarProduto = (novoProduto: ProdutoType) => {
         setProdutos((prev) => [...prev, { ...novoProduto, id: uuidv4() }]);

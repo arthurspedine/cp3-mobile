@@ -21,11 +21,12 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text className="text-2xl font-bold mb-4">Lista de Produtos</Text>
       <FlatList
         data={produtos}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View className="bg-gray-100 p-4 rounded-2xl mb-4 flex-row justify-between items-start shadow-sm">
+          <View className="bg-gray-100 p-4 rounded-2xl mb-4 flex-row justify-between items-start shadow-sm border-b">
             <View className="flex-1">
               <Text className="font-bold text-lg mb-1">{item.nome}</Text>
               <Text className="text-sm text-gray-700">ID: {item.id}</Text>

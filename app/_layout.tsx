@@ -7,38 +7,40 @@ export default function Layout() {
     return (
         <ProdutoProvider>
             <Tabs screenOptions={{ tabBarActiveTintColor: '#08A4C0FF', headerShown: false }}>
-                <Tabs.Screen name="index"
+                <Tabs.Screen
+                    name="index"
                     options={{
-                        title: "Home",
+                        title: 'Home',
                         tabBarIcon: ({ color, size, focused }) => (
-                            <Ionicons name={focused ? "home" : "home-outline"} size={size} color={color} />
-                        )
+                            <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />
+                        ),
                     }}
                 />
                 <Tabs.Screen
                     name="cadastro-produto"
                     options={{
-                        title: "Cadastrar Produto",
+                        title: 'Cadastrar',
                         tabBarIcon: ({ color, size, focused }) => (
-                            <Ionicons
-                                name={focused ? "add-circle" : "add-circle-outline"}
-                                size={size}
-                                color={color}
-                            />
-                        )
+                            <Ionicons name={focused ? 'add-circle' : 'add-circle-outline'} size={size} color={color} />
+                        ),
                     }}
                 />
                 <Tabs.Screen
                     name="devs"
                     options={{
-                        title: "Developers",
+                        title: 'Developers',
                         tabBarIcon: ({ color, size, focused }) => (
-                            <Ionicons
-                                name={focused ? "people" : "people-outline"}
-                                size={size}
-                                color={color}
-                            />
-                        )
+                            <Ionicons name={focused ? 'people' : 'people-outline'} size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name="scanner"
+                    options={{
+                        title: 'Scanner Código',
+                        tabBarIcon: ({ color, size, focused }) => (
+                            <Ionicons name={focused ? 'barcode-outline' : 'barcode-outline'} size={size} color={color} />
+                        ),
                     }}
                 />
             </Tabs>
