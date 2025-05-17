@@ -13,8 +13,37 @@ import { TextInputMask } from "react-native-masked-text";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useProdutoContext } from "../context/produtos-context";
 import type { ProdutoType } from "../types";
+import { Picker } from "@react-native-picker/picker";
 
-const estados = ["SP", "RJ", "MG", "RS", "PR"];
+const estados: string[] = [
+	"Acre",
+	"Alagoas",
+	"Amapá",
+	"Amazonas",
+	"Bahia",
+	"Ceará",
+	"Distrito Federal",
+	"Espírito Santo",
+	"Goiás",
+	"Maranhão",
+	"Mato Grosso",
+	"Mato Grosso do Sul",
+	"Minas Gerais",
+	"Pará",
+	"Paraíba",
+	"Paraná",
+	"Pernambuco",
+	"Piauí",
+	"Rio de Janeiro",
+	"Rio Grande do Norte",
+	"Rio Grande do Sul",
+	"Rondônia",
+	"Roraima",
+	"Santa Catarina",
+	"São Paulo",
+	"Sergipe",
+	"Tocantins",
+];
 
 export default function CadastroProdutoScreen() {
 	const { scannedCode } = useLocalSearchParams();
@@ -82,9 +111,8 @@ export default function CadastroProdutoScreen() {
 
 	return (
 		<SafeAreaView style={styles.container}>
+			<Text className="text-lg font-bold mb-4">Cadastro de Produto</Text>
 			<ScrollView>
-				<Text className="text-lg font-bold mb-4">Cadastro de Produto</Text>
-
 				<Text className="text-base mb-2">Nome:</Text>
 				<TextInput
 					style={styles.input}
@@ -137,32 +165,36 @@ export default function CadastroProdutoScreen() {
 						onPress={() => router.push("/scanner")}
 						className="ml-4 px-3 py-2 bg-green-500 rounded-md"
 					>
-						<Text className="text-white font-medium">Ler QR</Text>
+						<Text className="text-white font-medium">Ler Código</Text>
 					</TouchableOpacity>
 				</View>
 
-				<Text className="text-base mb-2">Estado:</Text>
+				<Text className="text-base mb-2">Selecione um estado:</Text>
 				<View className="border border-gray-300 rounded-xl mb-6">
-					{estados.map((estado) => (
-						<TouchableOpacity
-							key={estado}
-							className={`px-3 py-2 ${form.estado === estado ? "bg-green-100" : ""}`}
-							onPress={() => handleChange("estado", estado)}
-						>
-							<Text>{estado}</Text>
-						</TouchableOpacity>
-					))}
+					<Picker
+						selectedValue={form.estado}
+						onValueChange={(value) => {
+							handleChange("estado", value);
+						}}
+						dropdownIconColor="#000"
+					>
+						{estados.map((estado) => (
+							<Picker.Item key={estado} label={estado} value={estado} />
+						))}
+					</Picker>
+					<Text className="text-base text-center py-2 color-[#555]">
+						Estado selecionado: {form.estado}
+					</Text>
 				</View>
+				<TouchableOpacity
+					className="bg-green-600 rounded-xl py-3"
+					onPress={cadastrar}
+				>
+					<Text className="text-white text-center font-semibold">
+						Salvar Produto
+					</Text>
+				</TouchableOpacity>
 			</ScrollView>
-
-			<TouchableOpacity
-				className="bg-green-600 rounded-xl py-3"
-				onPress={cadastrar}
-			>
-				<Text className="text-white text-center font-semibold">
-					Salvar Produto
-				</Text>
-			</TouchableOpacity>
 		</SafeAreaView>
 	);
 }
@@ -173,6 +205,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#f9f9f9",
 		paddingHorizontal: 20,
 		paddingTop: 40,
+		paddingBottom: 10,
 	},
 	header: {
 		flexDirection: "row",

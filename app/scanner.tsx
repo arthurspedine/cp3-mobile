@@ -1,8 +1,4 @@
-import {
-	type CameraCapturedPicture,
-	CameraView,
-	useCameraPermissions,
-} from "expo-camera";
+import { CameraView, useCameraPermissions } from "expo-camera";
 import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useRef, useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
