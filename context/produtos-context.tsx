@@ -4,10 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { ProdutoType } from '../types';
 
 type ProdutoContextType = {
-    produtos: ProdutoType[]
-    adicionarProduto: (produto: ProdutoType) => void
-    removerProduto: (id: string) => void
-}
+    produtos: ProdutoType[];
+    adicionarProduto: (produto: ProdutoType) => void;
+    removerProduto: (id: string) => void;
+    editarProduto: (produto: ProdutoType) => void;
+};
 
 export const ProdutoContext = createContext<ProdutoContextType>({} as ProdutoContextType);
 
@@ -22,19 +23,23 @@ export const ProdutoProvider = ({ children }: { children: React.ReactNode }) => 
         setProdutos((prev) => prev.filter((p) => p.id !== id));
     };
 
+    const editarProduto = (produtoEditado: ProdutoType) => {
+        setProdutos((prev) =>
+            prev.map((p) => (p.id === produtoEditado.id ? produtoEditado : p))
+        );
+    };
+
     return (
-        <ProdutoContext.Provider value={{ produtos, adicionarProduto, removerProduto }}>
+        <ProdutoContext.Provider value={{ produtos, adicionarProduto, removerProduto, editarProduto }}>
             {children}
         </ProdutoContext.Provider>
     );
 };
 
 export function useProdutoContext() {
-    const context = React.useContext(ProdutoContext)
+    const context = React.useContext(ProdutoContext);
     if (!context) {
-        throw new Error(
-            'useProdutoContext must be used within an ProdutoContext'
-        )
+        throw new Error('useProdutoContext must be used within an ProdutoContext');
     }
-    return context
+    return context;
 }

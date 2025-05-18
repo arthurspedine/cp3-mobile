@@ -34,15 +34,6 @@ export default function Layout() {
                         ),
                     }}
                 />
-                <Tabs.Screen
-                    name="scanner"
-                    options={{
-                        title: 'Scanner Código',
-                        tabBarIcon: ({ color, size, focused }) => (
-                            <Ionicons name={focused ? 'barcode-outline' : 'barcode-outline'} size={size} color={color} />
-                        ),
-                    }}
-                />
             </Tabs>
         </ProdutoProvider>
     );
