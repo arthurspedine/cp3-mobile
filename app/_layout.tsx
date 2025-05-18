@@ -34,6 +34,20 @@ export default function Layout() {
                         ),
                     }}
                 />
+                <Tabs.Screen
+                    name="scanner"
+                    options={{
+                        title: 'Scanner Código',
+                        tabBarButton: () => null, // Remove a aba da navegação
+                    }}
+                />
+                <Tabs.Screen
+                    name="editar-produto"
+                    options={{
+                        title: 'Editar',
+                        tabBarButton: () => null, // Remove a aba da navegação
+                    }}
+                />
             </Tabs>
         </ProdutoProvider>
     );
